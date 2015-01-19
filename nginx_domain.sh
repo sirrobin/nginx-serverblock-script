@@ -44,7 +44,7 @@ server {
 
         charset utf-8;
 
-        location / {try_files $uri $uri/ /index.html /index.php?\$query_string;}
+        location / {try_files \$uri \$uri/ /index.html /index.php?\$query_string;}
 
         location ~ \.php$ {
                 try_files \$uri =404;
@@ -61,8 +61,8 @@ server {
         location ~ /\.ht {
                 deny all;
         }
-            access_log /var/log/nginx/$DOMAIN/access_log;
-            error_log /var/log/nginx/$DOMAIN/error_log.txt error;
+            access_log /var/log/nginx/$DOMAIN_access_log;
+            error_log /var/log/nginx/$DOMAIN_error_log.txt error;
 }
 EOF
 ) >  $config_dir/sites-available/$DOMAIN.conf
